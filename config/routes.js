@@ -31,7 +31,8 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  
+  'GET /':{view:'login'},
   'GET /signup': {
     view: 'signup'
   },

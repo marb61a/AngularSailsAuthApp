@@ -1,5 +1,7 @@
 angular.module('LoginMod').controller('LoginCtrl',['$scope', '$http','toastr', function($scope, $http, toastr){
-
+	
+	console.log('Login Controller has been initialised');
+	
 	$scope.runLogin = function(){
 		$http.put('/login',{
 			email: $scope.email,

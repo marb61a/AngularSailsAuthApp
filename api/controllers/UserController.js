@@ -21,22 +21,25 @@ module.exports = {
 				return res.negotiate(err);
 		    },
 		    success : function(encryptedPassword){
-		        require('machinepack-gravatar').exec({
-		               error : function(err){
-        			   return res.negotiate(err);
-        		    }, success : function(gravatarUrl){
-        		        // Create User
-        		        User.create({
-        		            name: req.param('name'),
+		        require('machinepack-gravatar').getImageUrl({
+					emailAddress: req.param('email')
+				}).exec({
+					error: function(err){
+						return res.negotiate(err);
+					},
+					success: function(gravatarUrl){
+						// Create User
+						User.create({
+							name: req.param('name'),
 							email: req.param('email'),
 							password: encryptedPassword,
 							lastLoggedIn: new Date(),
 							gravatarUrl: gravatarUrl
-        		        }, function userCreated(err, newUser){
-        		            if(err){
-        		                console.log('Error: '+err);
+						}, function userCreated(err, newUser){
+							if(err){
+								console.log('Error: '+err);
 								return res.negotiate(err);
-        		            }
+							}
         		            
         		            // Session Variable
         		            console.log('User Added');

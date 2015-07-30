@@ -1,1 +1,1 @@
-angular.module('SignupMod', [])
+angular.module('SignupMod', []);

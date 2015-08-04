@@ -10,4 +10,4 @@ angular.module('DashMod').controller('DashCtrl',['$scope', '$http', function($sc
 			console.log(err);
 		})
 	}
-}]);
+}])
